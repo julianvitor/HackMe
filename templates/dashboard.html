@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_dashboard.css') }}">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <p>Bem-vindo, {{ session['user'] }}!</p>
+    <h2>Usuários cadastrados:</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user['username'] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/logout">Sair</a>
+</body>
+</html>
