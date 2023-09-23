@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="/login">
+        <label for="username">Nome de usuário:</label>
+        <input type="text" name="username" required><br>
+        <label for="password">Senha:</label>
+        <input type="password" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+    <p>Não tem uma conta? <a href="/register">Cadastre-se</a></p>
+</body>
+</html>
