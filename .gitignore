@@ -296,3 +296,5 @@ pip-selfcheck.json
 *.db-shm
 *.db-wal
 # End of https://www.toptal.com/developers/gitignore/api/linux,flask,python,web,venv
+
+/venv-hackme

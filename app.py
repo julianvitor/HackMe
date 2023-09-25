@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta'  # Troque isso por uma chave secreta segura
+app.secret_key = 'sua_chave_secreta' 
 
 # Lista para armazenar os usuários cadastrados (simples para fins de demonstração)
 users = []
@@ -44,13 +44,18 @@ def register():
         # Verificar se o usuário já está cadastrado
         for user in users:
             if user['username'] == username:
-                return "Nome de usuário já existe."
+                flash("Nome de usuário já existe.", 'error')
+                return redirect(url_for('register'))
         
         # Adicionar o novo usuário à lista
         new_user = {'username': username, 'password': password}
         users.append(new_user)
-        print(users)
-        return "Cadastro bem-sucedido. Faça login agora."
+        
+        # Armazenar a mensagem flash na sessão
+        flash("Cadastro bem-sucedido. Faça login agora.", 'success')
+        
+        # Redireciona para a página inicial
+        return redirect(url_for('home'))
     
     return render_template('register.html')
 

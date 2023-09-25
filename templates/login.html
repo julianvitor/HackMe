@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Login</h1>
+    <script>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                var flashMessage = "{{ messages[0] }}"; // Pega a primeira mensagem flash
+                alert(flashMessage); // Exibe a mensagem em um alert
+            {% endif %}
+        {% endwith %}
+    </script>
     <form method="POST" action="/login">
         <label for="username">Nome de usuário:</label>
         <input type="text" name="username" required><br>
